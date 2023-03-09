@@ -1,21 +1,15 @@
 # Deep learning course
 
-This repo supplements Deep Learning course taught at YSDA and HSE @fall'22. _For previous iteration visit the [fall21 branch](https://github.com/yandexdataschool/Practical_DL/tree/fall21)._
+This repo supplements Deep Learning course taught at YSDA and HSE @fall'22.
 
-Lecture and practice materials for each week are in ./week* folders. You can complete all asignments locally or in google colab (see readme files in week*)
-
-# General info
-* Telegram [chat room](https://t.me/+IsxSfgFZr1E0MDMy) (russian).
-* Deadlines & grading rules can be found at [this page](https://github.com/yandexdataschool/Practical_DL/wiki/Homeworks-and-grading-(HSE)).
-* Any technical issues, ideas, bugs in course materials, contribution ideas - add an [issue](https://github.com/yandexdataschool/practical_dl/issues) or ask around in the chat.
-
-
+Lecture and practice materials for each week are in ./week* folders. 
 # Syllabus
 - __week01__ Intro to deep learning
-  - [ ] Lecture: Deep learning -- introduction, backpropagation algorithm, adaptive optimization methods
-  - [ ] Seminar: Neural networks in numpy
-  - [ ] Homework 1 is out!
-  - [ ] Please begin worrying about [installing pytorch](https://github.com/yandexdataschool/Practical_DL/issues/6). You will need it next week!
+  - [x] Lecture: Deep learning -- introduction, backpropagation algorithm, adaptive optimization methods
+  - [x] Seminar: Neural networks in numpy (`backprop.jpynb`)
+  - [x] Lecture: Adaptive optimization methods 
+  - [x] Practice: `adaptive_sgd.ipynb` (Homework 1?)
+  - [x] Please begin worrying about [installing pytorch](https://github.com/yandexdataschool/Practical_DL/issues/6). You will need it next week!
 
 - __week02__ Catch-all lecture about deep learning tricks
   - [ ] Lecture: Deep learning as a language, dropout, batch/layer normalization, other tricks, deep learning frameworks
@@ -25,6 +19,13 @@ Lecture and practice materials for each week are in ./week* folders. You can com
 - __week03__ Convolutional neural networks
   - [ ] Lecture: Computer vision tasks, Convolution and Pooling layers, ConvNet architectures, Data Augmentation
   - [ ] Seminar: Training your first ConvNet
+
+
+# General info
+* Telegram [chat room](https://t.me/+IsxSfgFZr1E0MDMy) (russian).
+* Deadlines & grading rules can be found at [this page](https://github.com/yandexdataschool/Practical_DL/wiki/Homeworks-and-grading-(HSE)).
+* Any technical issues, ideas, bugs in course materials, contribution ideas - add an [issue](https://github.com/yandexdataschool/practical_dl/issues) or ask around in the chat.
+
 
 # Contributors & course staff
 Course materials and teaching performed by
