@@ -14,7 +14,7 @@ Lecture and practice materials for each week are in ./week* folders.
 - __week02__ Catch-all lecture about deep learning tricks
   - [ ] Lecture: Deep learning as a language, dropout, batch/layer normalization, other tricks, deep learning frameworks
   - [ ] Homework 2 is out!
-  - [ ] Seminar: PyTorch basics
+  - [+] Seminar: PyTorch basics
 
 - __week03__ Convolutional neural networks
   - [ ] Lecture: Computer vision tasks, Convolution and Pooling layers, ConvNet architectures, Data Augmentation
