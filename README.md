@@ -12,9 +12,9 @@ Lecture and practice materials for each week are in ./week* folders.
   - [x] Please begin worrying about [installing pytorch](https://github.com/yandexdataschool/Practical_DL/issues/6). You will need it next week!
 
 - __week02__ Catch-all lecture about deep learning tricks
-  - [ ] Lecture: Deep learning as a language, dropout, batch/layer normalization, other tricks, deep learning frameworks
-  - [ ] Homework 2 is out!
-  - [+] Seminar: PyTorch basics
+  - [x] Lecture: Deep learning as a language, dropout, batch/layer normalization, other tricks, deep learning frameworks
+  - [x] Homework 2 is out!
+  - [x] Seminar: PyTorch basics
 
 - __week03__ Convolutional neural networks
   - [ ] Lecture: Computer vision tasks, Convolution and Pooling layers, ConvNet architectures, Data Augmentation
