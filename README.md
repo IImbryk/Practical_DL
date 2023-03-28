@@ -17,7 +17,7 @@ Lecture and practice materials for each week are in ./week* folders.
   - [x] Seminar: PyTorch basics
 
 - __week03__ Convolutional neural networks
-  - [ ] Lecture: Computer vision tasks, Convolution and Pooling layers, ConvNet architectures, Data Augmentation
+  - [x] Lecture: Computer vision tasks, Convolution and Pooling layers, ConvNet architectures, Data Augmentation
   - [ ] Seminar: Training your first ConvNet
 
 
