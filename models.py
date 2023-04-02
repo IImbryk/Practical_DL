@@ -27,7 +27,7 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
             accuracy = (predicts.argmax(dim=1) == labels).sum() / batch_size
             avg_acc_train += accuracy.item()
 
-        avg_loss_train /= len(train_dataloader)
+        # avg_loss_train /= len(train_dataloader)
         avg_acc_train /= len(train_dataloader)
 
         avg_acc_test = 0
@@ -46,7 +46,7 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
 
         tb.add_scalar("Loss", avg_loss_train, epoch)
         tb.add_scalar("Accuracy_train", avg_acc_train, epoch)
-        tb.add_scalar("Accuracy_test", torch.tensor(avg_acc_test), epoch)
+        tb.add_scalar("Accuracy_test", avg_acc_test, epoch)
 
         tb.add_histogram("conv1.bias", model.conv1.bias, epoch)
         tb.add_histogram("conv1.weight", model.conv1.weight, epoch)
