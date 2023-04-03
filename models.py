@@ -44,6 +44,8 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
 
         avg_acc_test /= len(test_dataloader)
 
+        # add callback -- with format !
+
         tb.add_scalar("Loss", avg_loss_train, epoch)
         tb.add_scalar("Accuracy_train", avg_acc_train, epoch)
         tb.add_scalar("Accuracy_test", avg_acc_test, epoch)
@@ -53,6 +55,11 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
         tb.add_histogram("conv2.bias", model.conv2.bias, epoch)
         tb.add_histogram("conv2.weight", model.conv2.weight, epoch)
 
-        print("epoch:", epoch, "accuracy:", avg_acc_train, "loss:", avg_loss_train)
+        # print("epoch:", epoch, "accuracy:", avg_acc_train, "loss:", avg_loss_train)
 
     return model
+## return model, optimizer (params),
+
+## set random state for train/test
+
+## random state could be chage on different PC. Save index or
