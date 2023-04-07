@@ -50,10 +50,10 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
         tb.add_scalar("Accuracy_train", avg_acc_train, epoch)
         tb.add_scalar("Accuracy_test", avg_acc_test, epoch)
 
-        tb.add_histogram("conv1.bias", model.conv1.bias, epoch)
-        tb.add_histogram("conv1.weight", model.conv1.weight, epoch)
-        tb.add_histogram("conv2.bias", model.conv2.bias, epoch)
-        tb.add_histogram("conv2.weight", model.conv2.weight, epoch)
+        # tb.add_histogram("conv1.bias", model.conv1.bias, epoch)
+        # tb.add_histogram("conv1.weight", model.conv1.weight, epoch)
+        # tb.add_histogram("conv2.bias", model.conv2.bias, epoch)
+        # tb.add_histogram("conv2.weight", model.conv2.weight, epoch)
 
         # print("epoch:", epoch, "accuracy:", avg_acc_train, "loss:", avg_loss_train)
 
