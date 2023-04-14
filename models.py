@@ -6,6 +6,7 @@ import copy
 from sklearn.metrics import balanced_accuracy_score, accuracy_score
 from tqdm import tqdm
 
+
 def log(path, file):
     """[Create a log file to record the experiment's logs]
 
@@ -107,13 +108,10 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
 
         # print("epoch:", epoch, "accuracy:", avg_acc_train, "loss:", avg_loss_train)
 
+        # set random state for train/test
+        # random state could be chage on different PC. Save index or
     return model, optimizer
-## return model, optimizer (params),
 
-## set random state for train/test
-
-
-## random state could be chage on different PC. Save index or
 
 def train_model_with_scheduler(model, loss, optimizer, train_dataloader, test_dataloader, scheduler, num_epochs, device, batch_size):
 
