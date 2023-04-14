@@ -1,7 +1,10 @@
 from torch.utils.tensorboard import SummaryWriter
 import logging
 import os
-
+import torch
+import copy
+from sklearn.metrics import balanced_accuracy_score, accuracy_score
+from tqdm import tqdm
 
 def log(path, file):
     """[Create a log file to record the experiment's logs]
@@ -109,4 +112,73 @@ def train_model(model, criterion, optimizer, train_dataloader, test_dataloader, 
 
 ## set random state for train/test
 
+
 ## random state could be chage on different PC. Save index or
+
+def train_model_with_scheduler(model, loss, optimizer, train_dataloader, test_dataloader, scheduler, num_epochs, device, batch_size):
+
+    best_acc = 0
+    tb = SummaryWriter()
+
+    for epoch in range(num_epochs):
+        print('Epoch {}/{}:'.format(epoch, num_epochs - 1), flush=True)
+        gt = []
+        net_outputs = []
+
+        # Each epoch has a training and validation phase
+        for phase in ['train', 'val']:
+            if phase == 'train':
+                dataloader = train_dataloader
+                model.train()  # Set model to training mode
+            else:
+                dataloader = test_dataloader
+                model.eval()   # Set model to evaluate mode
+
+            running_loss = 0.
+            running_acc = 0.
+
+            # Iterate over data.
+            for inputs, labels in tqdm(dataloader):
+                inputs = inputs.to(device)
+                labels = labels.to(device)
+
+                optimizer.zero_grad()
+
+                # forward and backward
+                with torch.set_grad_enabled(phase == 'train'):
+                    preds = model(inputs)
+                    loss_value = loss(preds, labels)
+                    preds_class = preds.argmax(dim=1)
+
+                    # backward + optimize only if in training phase
+                    if phase == 'train':
+                        loss_value.backward()
+                        optimizer.step()
+                    else:
+                        gt.extend(labels.data.cpu().numpy())
+                        net_outputs.extend(preds_class.data.cpu().numpy())
+
+                # statistics
+                running_loss += loss_value.item()
+                running_acc += (preds_class == labels.data).float().mean()
+
+            epoch_loss = running_loss / len(dataloader)
+            epoch_acc = running_acc / len(dataloader)
+
+            if phase == 'train':
+                print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc), flush=True)
+                scheduler.step()
+            else:
+                bacc = balanced_accuracy_score(gt, net_outputs)
+                print('{} Loss: {:.4f}, balanced_accuracy_score: {:.4f}, accuracy_score: {:.4f}'.format(phase, epoch_loss, bacc, accuracy_score(gt, net_outputs)), flush=True)
+
+            if phase == 'val' and bacc >= best_acc:
+                best_acc = bacc
+                best_model_wts = copy.deepcopy(model.state_dict())
+
+            tb.add_scalar("Loss", epoch_loss, epoch)
+            tb.add_scalar("Accuracy_train", epoch_acc, epoch)
+            tb.add_scalar("Accuracy_test", accuracy_score(gt, net_outputs), epoch)
+
+    model.load_state_dict(best_model_wts)
+    return model, best_acc
